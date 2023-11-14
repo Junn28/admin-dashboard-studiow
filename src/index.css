@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pws-1: #95b3ff;
+  --pws-2: #72fda9;
+  --pws-3: #fd6b6b;
+  --pws-4: #b3e5fc;
+
+  --bws-1: #f6f6f6;
+  --bws-2: #fafafa;
+
+  --nws-1: #333333;
+  --nws-2: #4f4f4f;
+  --nws-3: #828282;
+
+  --sws-1: #f5d739;
+  --sws-2: #fa2b2b;
+  --sws-3: #0dca37;
+  --sws-4: #aaa;
+}
+
+.bg-bws-white {
+  background-color: var(--bws-2);
+}
+
+.bg-bws-gray {
+  background-color: var(--bws-1);
+}
+
+.bg-pws-purple {
+  background-color: var(--pws-1);
+}
+
+.bg-sws-green {
+  background-color: var(--sws-3);
+}
+
+.bg-sws-yellow {
+  background-color: var(--sws-1);
+}
+
+.bg-sws-red {
+  background-color: var(--sws-2);
+}
+
+.color-nws-grey {
+  color: var(--nws-3);
+}
+
+.color-nws-black {
+  color: var(--nws-1);
+}
+
+.color-nws-gray {
+  color: var(--nws-2);
+}
+
+.color-sws-green {
+  color: var(--sws-3);
+}
+
+.sidebar > a.active > .menu,
+.sidebar > a.active > .btn-dropdown {
+  background-color: #95b3ff;
+  color: var(--bws-2);
+}
+
+.sidebar > a.active > .menu > svg > path,
+.sidebar > a.active > .btn-dropdown > .menu > svg > path,
+.sidebar > a.active > .btn-dropdown > svg > path {
+  fill: var(--bws-2);
+}
+
+.sidebar > a.active > .menu > .rectangle,
+.sidebar > a.active > .btn-dropdown > .menu > .rectangle {
+  background-color: var(--pws-4);
+}
+
+.search-section {
+  border: 1px solid var(--pws-1);
+  padding: 6px 12px 6px 12px;
+}
+
+.bullet {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.badge-status {
+  max-width: max-content;
+  border: 1px solid var(--sws-3);
+  border-radius: 24px;
+}
+
+.badge-domain {
+  border: 2px solid var(--pws-1);
+  max-width: max-content;
+  padding: 2px 20px 2px 20px;
+  border-radius: 6px;
+}
+
+.border-btm {
+  border-bottom: 0.5px solid var(--nws-3);
+}
+
+input[name="customer"] {
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #d8e3ff;
+}
+
+td {
+  padding: 16px;
+}
+
+.active-page,
+.btn-page:hover,
+.btn-next:hover {
+  background-color: var(--pws-1);
+  color: var(--bws-2);
+}
+
+.btn-next:hover > svg > path {
+  fill: var(--bws-2);
+}
+
+.btn-page {
+  width: 31px;
+  height: 31px;
+}
+
+.line-page {
+  width: 6px;
+  border: 1px solid var(--bws-2);
+}
+
+.file-image {
+  border: 1px dashed var(--nws-1);
+}
+
+.input-description {
+  border: 1px solid var(--sws-4);
+}
+
+textarea,
+input,
+select#category {
+  outline: none;
+}
+
+select#category {
+  border: 1px solid var(--sws-4);
+  background: transparent;
+  padding: 8px;
+  color: var(--sws-4);
+}
+
+input[name="billing-date"] {
+  width: 25px;
+  height: 25px;
+}
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 20vh;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #b0b3bb7d;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 0 auto;
+  padding: 24px;
+  border: 4px solid #00000030;
+  border-radius: 9px;
+  width: 50%;
+}
+
+.close {
+  color: var(--nws-2);
+  font-size: 28px;
+  border: 2px solid var(--nws-2);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn-no {
+  border: 1px solid var(--pws-1);
+  color: var(--pws-1);
+  padding: 8px 30px;
+}
+
+.btn-yes {
+  border: 1px solid var(--pws-1);
+  background-color: var(--pws-1);
+  padding: 8px 30px;
+  color: #fff;
+}
+
+.bill-receipt {
+  border: 1.5px solid var(--nws-3);
+}

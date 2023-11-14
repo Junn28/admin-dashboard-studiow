@@ -1,0 +1,43 @@
+.icon {
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.bg-template {
+  background-color: #95b3ff4d;
+}
+
+.bg-domain {
+  background-color: #25e5724d;
+}
+
+.bg-portofolio {
+  background-color: #f5d7394d;
+}
+
+.bg-promo {
+  background-color: #fd6b6b4d;
+}
+
+.btn-primary {
+  color: #fff;
+  padding: 6px 12px 6px 12px;
+  border-radius: 4px;
+}
+
+.text-chart > p {
+  color: #00000080;
+}
+
+.rectangle-chart {
+  width: 4px;
+  height: 32px;
+  background-color: #000;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+.text-dashboard-sale {
+  font-size: 10px;
+  font-weight: 500;
+}

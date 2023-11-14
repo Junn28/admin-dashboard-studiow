@@ -1,0 +1,258 @@
+import { useLocation, useNavigate } from "react-router-dom";
+
+export default function Table({ tHead, tBody, confirm }) {
+  const { pathname } = useLocation();
+  const path = pathname.slice(1, pathname.length);
+  const navigate = useNavigate();
+
+  const navigateDetail = (id) => {
+    navigate(`/keuangan/pesanan/${id}`);
+  };
+
+  const editTemplate = (id) => {
+    navigate(`/template/edit/${id}`);
+  };
+
+  return (
+    <table className="table-auto w-full rounded-lg shadow-lg">
+      <thead>
+        <tr className="text-sm text-center border-btm">
+          {tHead.map((item) => {
+            if (item === "Customer") {
+              return (
+                <td className="flex items-center text-start px-2 py-6">
+                  <input type="checkbox" name="customer" />
+                  <p className="ms-2">{item}</p>
+                </td>
+              );
+            }
+            return <td>{item}</td>;
+          })}
+        </tr>
+      </thead>
+      <tbody>
+        {tBody.map((item, index) => {
+          switch (path) {
+            case "dashboard":
+              return (
+                <tr className="text-sm text-center mb-2">
+                  <td>
+                    <div className="user-group flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-10 h-10"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+
+                      <div className="body ms-1">
+                        <p className="font-medium color-nws-black text-start">
+                          {item.name}
+                        </p>
+                        <p className="text-xs font-light color-nws-gray">
+                          {item.email}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="text-start">{item.plan}</td>
+                  <td>
+                    <div className="badge-status flex items-center px-5 py-1 mx-auto">
+                      <div className="bullet bg-sws-green"></div>
+                      <p className="color-sws-green ms-2">{item.status}</p>
+                    </div>
+                  </td>
+                  <td>{item.billing_date}</td>
+                  <td>{item.description}</td>
+                  <td>
+                    <img
+                      src={item.img_src}
+                      alt="document"
+                      className="mx-auto"
+                    />
+                  </td>
+                </tr>
+              );
+
+            case "domain":
+              return (
+                <tr className="text-sm text-center mb-2">
+                  <td>
+                    <div className="badge-domain">{item.domain}</div>
+                  </td>
+                  <td>{item.plan}</td>
+                  <td>
+                    <div className="badge-status flex items-center px-5 py-1 mx-auto">
+                      <div className="bullet bg-sws-green"></div>
+                      <p className="color-sws-green ms-2">{item.status}</p>
+                    </div>
+                  </td>
+                  <td>{item.billing_date}</td>
+                  <td>{item.description}</td>
+                  <td>{item.price}</td>
+                  <td>
+                    <div className="btn-action flex gap-2 text-white justify-center">
+                      <button className="flex items-center px-3 py-1 bg-sws-yellow rounded-sm">
+                        <svg
+                          width="13"
+                          height="12"
+                          viewBox="0 0 13 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="me-2"
+                        >
+                          <path
+                            d="M12.3285 2.80139C12.58 2.54989 12.58 2.13071 12.3285 1.89211L10.8195 0.383093C10.5809 0.13159 10.1617 0.13159 9.91022 0.383093L8.72365 1.56322L11.1419 3.98152M0.907715 9.3856V11.8039H3.32601L10.4584 4.66509L8.04007 2.24679L0.907715 9.3856Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <p className="text-sm">Edit</p>
+                      </button>
+                      <button className="flex items-center px-3 py-1 bg-sws-red rounded-sm">
+                        <svg
+                          width="11"
+                          height="12"
+                          viewBox="0 0 11 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="me-2"
+                        >
+                          <path
+                            d="M10.0237 0.823534H7.75896L7.1119 0.176476H3.87661L3.22955 0.823534H0.964844V2.11765H10.0237M1.6119 10.5294C1.6119 10.8726 1.74825 11.2018 1.99094 11.4445C2.23364 11.6872 2.5628 11.8235 2.90602 11.8235H8.08249C8.42571 11.8235 8.75488 11.6872 8.99757 11.4445C9.24026 11.2018 9.37661 10.8726 9.37661 10.5294V2.76471H1.6119V10.5294Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <p className="text-sm">Delete</p>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+
+            case "template":
+              return (
+                <tr className="text-sm text-center mb-2">
+                  <td>
+                    <img
+                      src={item.template}
+                      alt="template"
+                      className="mx-auto"
+                    />
+                    <p>{item.title}</p>
+                  </td>
+                  <td>{item.plan}</td>
+                  <td>{item.billing_date}</td>
+                  <td>{item.description}</td>
+                  <td>{item.price}</td>
+                  <td>
+                    <div className="btn-action flex gap-2 text-white justify-center">
+                      <button
+                        className="flex items-center px-3 py-1 bg-sws-yellow rounded-sm"
+                        onClick={() => {
+                          editTemplate(index);
+                        }}
+                      >
+                        <svg
+                          width="13"
+                          height="12"
+                          viewBox="0 0 13 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="me-2"
+                        >
+                          <path
+                            d="M12.3285 2.80139C12.58 2.54989 12.58 2.13071 12.3285 1.89211L10.8195 0.383093C10.5809 0.13159 10.1617 0.13159 9.91022 0.383093L8.72365 1.56322L11.1419 3.98152M0.907715 9.3856V11.8039H3.32601L10.4584 4.66509L8.04007 2.24679L0.907715 9.3856Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <p className="text-sm">Edit</p>
+                      </button>
+
+                      <button
+                        className="flex items-center px-3 py-1 bg-sws-red rounded-sm"
+                        onClick={() => {
+                          confirm(index);
+                        }}
+                      >
+                        <svg
+                          width="11"
+                          height="12"
+                          viewBox="0 0 11 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="me-2"
+                        >
+                          <path
+                            d="M10.0237 0.823534H7.75896L7.1119 0.176476H3.87661L3.22955 0.823534H0.964844V2.11765H10.0237M1.6119 10.5294C1.6119 10.8726 1.74825 11.2018 1.99094 11.4445C2.23364 11.6872 2.5628 11.8235 2.90602 11.8235H8.08249C8.42571 11.8235 8.75488 11.6872 8.99757 11.4445C9.24026 11.2018 9.37661 10.8726 9.37661 10.5294V2.76471H1.6119V10.5294Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <p className="text-sm">Delete</p>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+
+            case "keuangan/pesanan":
+              return (
+                <tr
+                  className="text-sm text-center mb-2 cursor-pointer"
+                  onClick={() => {
+                    navigateDetail(index);
+                  }}
+                >
+                  <td>
+                    <div className="user-group flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-10 h-10"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+
+                      <div className="body ms-1">
+                        <p className="font-medium color-nws-black text-start">
+                          {item.name}
+                        </p>
+                        <p className="text-xs font-light color-nws-gray">
+                          {item.email}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{item.no_telp}</td>
+                  <td className="text-start">{item.plan}</td>
+                  <td>{item.billing_date}</td>
+                  <td>{item.description}</td>
+                  <td>
+                    <img
+                      src={item.img_src}
+                      alt="document"
+                      className="mx-auto"
+                    />
+                  </td>
+                </tr>
+              );
+          }
+        })}
+      </tbody>
+    </table>
+  );
+}
