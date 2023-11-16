@@ -17,7 +17,7 @@ export default function EditTemplate() {
       title={"Edit"}
       edit={edit}
       data={dataTemplate}
-      send={toggleEdit}
+      sendEdit={toggleEdit}
     />
   );
 }

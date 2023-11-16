@@ -5,11 +5,11 @@ export default function ListCard({ data }) {
   const path = pathname.slice(1, pathname.length);
 
   return (
-    <div className="grid gap-6 grid-cols-4">
+    <div className="grid gap-6 grid-cols-4 my-3">
       {data.map((item, index) => {
         return (
           <div className="py-5" key={index}>
-            {path === "dashboard" ? (
+            {path === "" ? (
               <div className="card p-5 shadow-xl rounded-lg">
                 <div className={`icon p-3 mb-2 ${item.class}`}>{item.icon}</div>
 

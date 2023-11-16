@@ -4,6 +4,8 @@ import HeaderSection from "../../../components/utils/headerSection";
 import Table from "../../../components/utils/table";
 import Pagination from "../../../components/utils/pagination";
 import iPlus from "../../../assets/plus.svg";
+import { useNavigate } from "react-router-dom";
+import dataBody from "./data";
 
 export default function Promo() {
   const card = [
@@ -204,6 +206,20 @@ export default function Promo() {
       total: 100,
     },
   ];
+  const tableHead = [
+    "Types",
+    "Status",
+    "Billing Date",
+    "Description",
+    "Price",
+    "Discount",
+    "Action",
+  ];
+  const navigate = useNavigate();
+
+  const addPromo = () => {
+    navigate("/keuangan/promo/add");
+  };
 
   return (
     <div className="w-full">
@@ -218,10 +234,11 @@ export default function Promo() {
             title={"Domain Types"}
             btnName={"Add"}
             btnIcon={iPlus}
+            btnAction={addPromo}
             filter={true}
             search={true}
           />
-          {/* <Table tBody={tableBody} tHead={tableHead} /> */}
+          <Table tBody={dataBody} tHead={tableHead} />
         </div>
 
         <div className="flex justify-end px-5">

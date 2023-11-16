@@ -5,7 +5,7 @@ let dataBody = [
     title: "Lorem, ipsum dolor.",
     plan: "Premium",
     status: "Active",
-    billing_date: "Annually",
+    billing_date: "Monthly",
     description: "Web Template",
     price: "Rp200.000",
   },

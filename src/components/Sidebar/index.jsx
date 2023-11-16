@@ -20,7 +20,7 @@ export default function Sidebar() {
         </svg>
       ),
       dropdown: null,
-      path: "dashboard",
+      path: "/",
     },
     {
       name: "Domain",

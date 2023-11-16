@@ -103,7 +103,7 @@
 }
 
 .border-btm {
-  border-bottom: 0.5px solid var(--nws-3);
+  border-bottom: 2px solid var(--bws-1);
 }
 
 input[name="customer"] {
@@ -211,4 +211,27 @@ input[name="billing-date"] {
 
 .bill-receipt {
   border: 1.5px solid var(--nws-3);
+}
+
+.discount {
+  width: 120px;
+  height: 30px;
+  border-right: solid 15px transparent;
+  border-left: solid 15px transparent;
+  border-top: solid 15px #f9a62d;
+  border-bottom: solid 15px #f9a62d;
+  border-radius: 8px;
+}
+
+.discount-line {
+  border: dashed 0.5px var(--bws-2);
+  height: 30px;
+}
+
+#input-discount {
+  border: 1.5px solid var(--nws-3);
+  width: 60px;
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 5px;
 }

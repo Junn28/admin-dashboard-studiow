@@ -1,11 +1,11 @@
-import iImg from "../../../assets/img.svg";
-import iUnorderList from "../../../assets/unorder-list.svg";
-import iOrderList from "../../../assets/order-list.svg";
-import iSave from "../../../assets/save.svg";
-import Modal from "../../../components/utils/modal";
 import { useState } from "react";
+import iImg from "../../../../assets/img.svg";
+import iUnorderList from "../../../../assets/unorder-list.svg";
+import iOrderList from "../../../../assets/order-list.svg";
+import iSave from "../../../../assets/save.svg";
+import Modal from "../../../../components/utils/modal";
 
-export default function AddTemplate({ title, edit, data, sendEdit }) {
+export default function AddBlog({ title, edit, data, sendEdit }) {
   const [modal, setModal] = useState(false);
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("");
@@ -17,7 +17,7 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
   return (
     <div className="w-full">
       <div className="mt-5 px-5">
-        <h1 className="text-2xl font-medium">{title || "Add"} Template</h1>
+        <h1 className="text-2xl font-medium">{title || "Add"} Blog</h1>
 
         <div className="upload-image w-1/2 p-3 shadow-xl">
           <p>Upload Image (Preview)</p>
@@ -51,7 +51,7 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
               className="bg-pws-purple py-2 px-8 mb-5 text-white text-base font-medium rounded-md"
               onClick={() => {
                 document.getElementById("file-upload").click();
-                sendEdit(!edit);
+                // sendEdit(!edit);
               }}
             >
               Choose Image
@@ -75,18 +75,15 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
         <h1 className="text-2xl font-medium">Submission</h1>
 
         <form action="" className="p-8 shadow-xl">
-          <label
-            htmlFor="url-template"
-            className="block text-base font-semibold mb-2"
-          >
-            Url template<span>*</span>
+          <label htmlFor="topic" className="block text-base font-semibold mb-2">
+            Topic<span>*</span>
           </label>
           <input
-            type="url"
-            name="url-template"
+            type="text"
+            name="topic"
             placeholder="Field Description"
             className="block w-full border-2 p-2 rounded mb-3"
-            defaultValue={edit && data.url_template}
+            // defaultValue={edit && data.url_template}
             required
           />
 
@@ -105,18 +102,6 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
             <option value="1">1</option>
             <option value="2">2</option>
           </select>
-
-          <label htmlFor="title" className="block text-base font-semibold mb-2">
-            Title<span>*</span>
-          </label>
-          <input
-            type="text"
-            name="title"
-            placeholder="Field Description"
-            className="block w-full border-2 p-2 rounded mb-3"
-            defaultValue={edit && data.title}
-            required
-          />
 
           <label
             htmlFor="description"
@@ -154,38 +139,21 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
               id="description"
               placeholder="Field Description"
               className="block w-full p-2"
-              defaultValue={edit && data.description}
+              //   defaultValue={edit && data.description}
             ></textarea>
           </div>
 
-          <label
-            htmlFor="billing-date"
-            className="block text-base font-semibold mb-2"
-          >
-            Billing Date<span>*</span>
+          <label htmlFor="tools" className="block text-base font-semibold mb-2">
+            Tools<span>*</span>
           </label>
-
-          <div className="flex">
-            <label className="flex me-4">
-              <input
-                type="radio"
-                name="billing-date"
-                className="me-2"
-                defaultChecked={edit && data.billing_date === "Monthly"}
-              />
-              Monthly
-            </label>
-
-            <label className="flex">
-              <input
-                type="radio"
-                name="billing-date"
-                className="me-2"
-                defaultChecked={edit && data.billing_date === "Annually"}
-              />
-              Annually
-            </label>
-          </div>
+          <input
+            type="text"
+            name="tools"
+            placeholder="Field Description"
+            className="block w-full border-2 p-2 rounded mb-3"
+            // defaultValue={edit && data.url_template}
+            required
+          />
         </form>
 
         <div className="flex justify-end mt-5 mb-5">
