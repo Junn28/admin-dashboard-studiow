@@ -8,13 +8,17 @@
   padding: 8px 0 8px 0;
 }
 
-.btn-dropdown {
-  width: 100%;
-}
-
 .rectangle {
   width: 4px;
   height: 32px;
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+.rectangle-dropdown {
+  width: 2px;
+  height: 16px;
   background-color: #fff;
   display: inline-block;
   border-radius: 12px;

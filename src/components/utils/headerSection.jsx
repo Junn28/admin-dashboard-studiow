@@ -67,9 +67,13 @@ export default function HeaderSection({
           className="btn-primary bg-sws-green flex items-center"
           onClick={btnAction}
         >
-          <img src={btnIcon} alt="" />
+          <img
+            src={btnIcon}
+            alt="icon"
+            className={`${!btnIcon && "hidden"} me-3`}
+          />
 
-          <span className="ms-3 font-light text-sm">{btnName}</span>
+          <span className="font-light text-sm">{btnName}</span>
         </button>
       </div>
     </div>

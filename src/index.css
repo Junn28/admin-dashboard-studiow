@@ -62,19 +62,19 @@
 }
 
 .sidebar > a.active > .menu,
-.sidebar > a.active > .btn-dropdown {
+a.active > .dropdown {
   background-color: #95b3ff;
   color: var(--bws-2);
 }
 
 .sidebar > a.active > .menu > svg > path,
-.sidebar > a.active > .btn-dropdown > .menu > svg > path,
-.sidebar > a.active > .btn-dropdown > svg > path {
+a.active > .dropdown > svg > path,
+a.active > .btn-dropdown > svg > path {
   fill: var(--bws-2);
 }
 
 .sidebar > a.active > .menu > .rectangle,
-.sidebar > a.active > .btn-dropdown > .menu > .rectangle {
+a.active > .dropdown > .rectangle-dropdown {
   background-color: var(--pws-4);
 }
 
