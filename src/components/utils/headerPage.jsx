@@ -3,7 +3,7 @@ import "../../pages/Dashboard/dashboard.css";
 export default function HeaderPage({ title }) {
   return (
     <div className="flex justify-between">
-      <h1 className="text-xl font-medium">{title}</h1>
+      <h1 className="text-2xl font-medium">{title}</h1>
       <button className="btn-primary bg-pws-purple flex items-center">
         <svg
           width="14"

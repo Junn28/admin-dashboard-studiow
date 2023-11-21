@@ -10,25 +10,27 @@ export default function MenuDropdown({ items }) {
         <Disclosure>
           {({ open }) => (
             <>
-              <Disclosure.Button
-                className="w-full rounded-lg flex justify-between
+              <NavLink to={item.path}>
+                <Disclosure.Button
+                  className="w-full rounded-lg flex justify-between
                   mb-5"
-                key={index}
-              >
-                <div className="menu flex items-center">
-                  <div className="rectangle me-4"></div>
+                  key={index}
+                >
+                  <div className="menu flex items-center">
+                    <div className="rectangle me-4"></div>
 
-                  {item.icon}
+                    {item.icon}
 
-                  <p className="ms-4 font-medium">{item.name}</p>
-                </div>
+                    <p className="ms-4 font-medium">{item.name}</p>
+                  </div>
 
-                <ChevronUpIcon
-                  className={`${
-                    open ? "rotate-180 transform" : ""
-                  } h-5 w-5 text-black mt-4`}
-                />
-              </Disclosure.Button>
+                  <ChevronUpIcon
+                    className={`${
+                      open ? "rotate-180 transform" : ""
+                    } h-5 w-5 text-black mt-4`}
+                  />
+                </Disclosure.Button>
+              </NavLink>
 
               <Disclosure.Panel className="flex flex-col mb-4 mt-3">
                 {item.dropdown?.map((value, i) => {

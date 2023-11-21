@@ -6,6 +6,8 @@ import Pagination from "../../../components/utils/pagination";
 import iPlus from "../../../assets/plus.svg";
 import { useNavigate } from "react-router-dom";
 import dataBody from "./data";
+import { useState } from "react";
+import ModalConfirmation from "../../../components/utils/modalConfirmation";
 
 export default function Promo() {
   const card = [
@@ -215,10 +217,17 @@ export default function Promo() {
     "Discount",
     "Action",
   ];
+  const [confirm, setConfirm] = useState(false);
+  const [id, setId] = useState(null);
   const navigate = useNavigate();
 
   const addPromo = () => {
     navigate("/keuangan/promo/add");
+  };
+
+  const openConfirm = (id) => {
+    setConfirm(!confirm);
+    setId(id);
   };
 
   return (
@@ -238,13 +247,21 @@ export default function Promo() {
             filter={true}
             search={true}
           />
-          <Table tBody={dataBody} tHead={tableHead} />
+          <Table tBody={dataBody} tHead={tableHead} confirm={openConfirm} />
         </div>
 
         <div className="flex justify-end px-5">
           <Pagination />
         </div>
       </div>
+
+      <ModalConfirmation
+        text={"Are you sure want to delete this promo ?"}
+        open={confirm}
+        send={openConfirm}
+        idData={id}
+        data={dataBody}
+      />
     </div>
   );
 }

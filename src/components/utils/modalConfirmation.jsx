@@ -1,8 +1,14 @@
 import { useState } from "react";
-import data from "../../pages/Template/data";
 import Modal from "./modal";
 
-export default function ModalConfirmation({ open, send, idTemplate, csv }) {
+export default function ModalConfirmation({
+  text,
+  open,
+  send,
+  idData,
+  data,
+  csv,
+}) {
   const [openModal, setOpenModal] = useState(false);
 
   const sendData = () => {
@@ -14,9 +20,9 @@ export default function ModalConfirmation({ open, send, idTemplate, csv }) {
     sendData();
   };
 
-  const deleteTemplate = () => {
+  const deleteData = () => {
     setOpenModal(!openModal);
-    return data.splice(idTemplate, 1);
+    return data.splice(idData, 1);
   };
 
   const exportCsv = () => {
@@ -29,11 +35,7 @@ export default function ModalConfirmation({ open, send, idTemplate, csv }) {
         <span className="close text-lg px-2" onClick={sendData}>
           &times;
         </span>
-        <p className="text-2xl font-medium text-center mt-5">
-          {csv
-            ? "Are you sure want to export this data ?"
-            : "Are you sure want to delete this template ?"}
-        </p>
+        <p className="text-2xl font-medium text-center mt-5">{text}</p>
 
         <div className="btn-confirm text-center my-12">
           <button
@@ -47,7 +49,7 @@ export default function ModalConfirmation({ open, send, idTemplate, csv }) {
             onClick={() => {
               if (csv) {
                 exportCsv();
-              } else deleteTemplate();
+              } else deleteData();
             }}
           >
             Yes

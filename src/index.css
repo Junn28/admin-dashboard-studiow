@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "Poppins", sans-serif;
+}
 
 :root {
   --pws-1: #95b3ff;
@@ -112,11 +118,12 @@ input[name="customer"] {
   margin-left: 10px;
 }
 
-tr:nth-child(even) {
+tr.body-page:nth-child(even) {
   background-color: #d8e3ff;
 }
 
-td {
+.head-page td,
+.body-page td {
   padding: 16px;
 }
 
@@ -179,6 +186,15 @@ input[name="billing-date"] {
   background-color: #b0b3bb7d;
 }
 
+.modal-detail {
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  overflow: auto; /* Enable scroll if needed */
+}
+
 .modal-content {
   background-color: #fefefe;
   margin: 0 auto;
@@ -186,6 +202,15 @@ input[name="billing-date"] {
   border: 4px solid #00000030;
   border-radius: 9px;
   width: 50%;
+}
+
+.detail-content {
+  background-color: #fefefe;
+  margin: 0 auto;
+  padding: 20px 60px;
+  border: 4px solid #00000030;
+  border-radius: 9px;
+  width: 75%;
 }
 
 .close {
@@ -234,4 +259,32 @@ input[name="billing-date"] {
   padding: 10px 5px;
   text-align: center;
   border-radius: 5px;
+}
+
+.box-question {
+  border: 1px solid var(--nws-3);
+  border-radius: 8px;
+}
+
+.box-line,
+.line-item {
+  width: 5px;
+  height: 100%;
+}
+
+.btn-toggle {
+  width: 50px;
+  border-radius: 24px;
+}
+
+.circle {
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.box-body {
+  border: 1px solid var(--sws-4);
+  border-radius: 6px;
 }

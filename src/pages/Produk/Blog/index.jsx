@@ -1,64 +1,9 @@
 import HeaderPage from "../../../components/utils/headerPage";
 import Pagination from "../../../components/utils/pagination";
 import Table from "../../../components/utils/table";
+import dataBody from "./data";
 
 export default function Blog() {
-  const tableBody = [
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Publish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Unpublish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Publish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Unpublish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Publish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Unpublish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Publish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Unpublish",
-    },
-    {
-      project: "New Game 23",
-      category: "Website",
-      releases_date: "2023/03/23",
-      status: "Publish",
-    },
-  ];
   const tableHead = [
     "Nama Project",
     "Kategori",
@@ -75,7 +20,7 @@ export default function Blog() {
         </div>
 
         <div className="px-5 mb-5">
-          <Table tBody={tableBody} tHead={tableHead} />
+          <Table tBody={dataBody} tHead={tableHead} />
         </div>
 
         <div className="flex justify-end px-5">

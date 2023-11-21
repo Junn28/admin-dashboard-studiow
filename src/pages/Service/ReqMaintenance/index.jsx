@@ -1,81 +1,73 @@
 import HeaderSection from "../../../components/utils/headerSection";
 import Table from "../../../components/utils/table";
 import Pagination from "../../../components/utils/pagination";
-import ModalDetail from "../../../components/utils/modalDetail";
 import iPlus from "../../../assets/plus.svg";
 
-export default function CustomProject() {
+export default function ReqMaintenance() {
   const tableBody = [
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
     {
-      date: "2023/03/23",
       name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
-    },
-    {
-      date: "2023/03/23",
-      name: "Rahma Sari",
-      project: "New Game 2023",
-      category: "Game",
+      product: "Landing Page",
+      subject: "Ganti card",
+      whatsapp: "0812-3456-7890",
     },
   ];
   const tableHead = [
-    "Tanggal Permintaan",
-    "Nama Pesanan",
-    "Nama Project",
-    "Kategori Project",
+    "Nama Lengkap",
+    "Nama Produk",
+    "Subjek",
+    "Whatsapp",
     "View Detail",
     "Action",
   ];
-
   return (
     <div className="w-full">
       <div className="container mt-8">
         <div className="px-5">
           <HeaderSection
-            title={"Custom Project"}
+            title={"Request Maintenance"}
             btnName={"Add"}
             btnIcon={iPlus}
             filter={true}

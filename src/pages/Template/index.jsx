@@ -5,9 +5,9 @@ import Table from "../../components/utils/table";
 import Pagination from "../../components/utils/pagination";
 import iPlus from "../../assets/plus.svg";
 import { useNavigate } from "react-router-dom";
-import DataBody from "./data";
 import ModalConfirmation from "../../components/utils/modalConfirmation";
 import { useState } from "react";
+import dataBody from "./data";
 
 export default function Template() {
   const card = [
@@ -246,7 +246,7 @@ export default function Template() {
             filter={true}
             search={true}
           />
-          <Table tBody={DataBody} tHead={tableHead} confirm={openConfirm} />
+          <Table tBody={dataBody} tHead={tableHead} confirm={openConfirm} />
         </div>
 
         <div className="flex justify-end px-5">
@@ -254,7 +254,13 @@ export default function Template() {
         </div>
       </div>
 
-      <ModalConfirmation open={confirm} send={openConfirm} idTemplate={id} />
+      <ModalConfirmation
+        text={"Are you sure want to delete this template ?"}
+        open={confirm}
+        send={openConfirm}
+        idData={id}
+        data={dataBody}
+      />
     </div>
   );
 }

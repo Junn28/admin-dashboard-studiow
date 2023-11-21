@@ -17,6 +17,11 @@ import Portofolio from "./pages/Produk/Portofolio";
 import AddPortofolio from "./pages/Produk/Portofolio/AddPortofolio";
 import CustomProject from "./pages/Produk/CustomProject";
 import ContactUs from "./pages/Support/ContactUs";
+import EditBlog from "./pages/Produk/Blog/EditBlog/[id]";
+import EditPortofolio from "./pages/Produk/Portofolio/EditPortofolio/[id]";
+import Faq from "./pages/Support/Faq";
+import ReqMaintenance from "./pages/Service/ReqMaintenance";
+import RentServer from "./pages/Service/RentServer";
 
 function App() {
   return (
@@ -39,9 +44,17 @@ function App() {
           <Route path="produk/custom-project" element={<CustomProject />} />
           <Route path="produk/portofolio" element={<Portofolio />} />
           <Route path="produk/portofolio/add" element={<AddPortofolio />} />
+          <Route
+            path="produk/portofolio/edit/:id"
+            element={<EditPortofolio />}
+          />
           <Route path="produk/blog" element={<Blog />} />
           <Route path="produk/blog/add" element={<AddBlog />} />
+          <Route path="produk/blog/edit/:id" element={<EditBlog />} />
           <Route path="support/contact" element={<ContactUs />} />
+          <Route path="support/faq" element={<Faq />} />
+          <Route path="service/maintenance" element={<ReqMaintenance />} />
+          <Route path="service/server" element={<RentServer />} />
         </Routes>
       </main>
     </>

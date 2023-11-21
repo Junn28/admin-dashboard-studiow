@@ -10,13 +10,7 @@ export default function HeaderSection({
 }) {
   return (
     <div className="flex justify-between">
-      <h1
-        className={`${
-          title === "Pesanan" || "Detail Pesanan" ? "text-2xl" : "text-xl"
-        } font-medium`}
-      >
-        {title}
-      </h1>
+      <h1 className="text-2xl font-medium">{title}</h1>
 
       <div className="btn-group flex">
         <button

@@ -136,6 +136,7 @@ export default function Sidebar() {
           path: "sekolah",
         },
       ],
+      path: "domain",
     },
     {
       name: "Template",
@@ -281,6 +282,7 @@ export default function Sidebar() {
           path: "sekolah",
         },
       ],
+      path: "template",
     },
     {
       name: "Keuangan",

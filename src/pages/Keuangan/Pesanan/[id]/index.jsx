@@ -86,7 +86,12 @@ export default function DetailPesanan() {
         </div>
       </div>
 
-      <ModalConfirmation open={confirm} send={openConfirm} csv={true} />
+      <ModalConfirmation
+        text={"Are you sure want to export this data ?"}
+        open={confirm}
+        send={openConfirm}
+        csv={true}
+      />
     </div>
   );
 }
