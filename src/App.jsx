@@ -22,6 +22,10 @@ import EditPortofolio from "./pages/Produk/Portofolio/EditPortofolio/[id]";
 import Faq from "./pages/Support/Faq";
 import ReqMaintenance from "./pages/Service/ReqMaintenance";
 import RentServer from "./pages/Service/RentServer";
+import AddServer from "./pages/Service/RentServer/AddServer";
+import EditServer from "./pages/Service/RentServer/EditServer/[id]";
+import AddFaq from "./pages/Support/Faq/AddFaq";
+import EditFaq from "./pages/Support/Faq/EditFaq";
 
 function App() {
   return (
@@ -53,8 +57,12 @@ function App() {
           <Route path="produk/blog/edit/:id" element={<EditBlog />} />
           <Route path="support/contact" element={<ContactUs />} />
           <Route path="support/faq" element={<Faq />} />
+          <Route path="support/faq/add" element={<AddFaq />} />
+          <Route path="support/faq/edit/:id" element={<EditFaq />} />
           <Route path="service/maintenance" element={<ReqMaintenance />} />
           <Route path="service/server" element={<RentServer />} />
+          <Route path="service/server/add" element={<AddServer />} />
+          <Route path="service/server/edit/:id" element={<EditServer />} />
         </Routes>
       </main>
     </>

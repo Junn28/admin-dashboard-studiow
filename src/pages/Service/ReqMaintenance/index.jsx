@@ -1,59 +1,12 @@
 import HeaderSection from "../../../components/utils/headerSection";
 import Table from "../../../components/utils/table";
 import Pagination from "../../../components/utils/pagination";
+import ModalConfirmation from "../../../components/utils/modalConfirmation";
 import iPlus from "../../../assets/plus.svg";
+import dataBody from "./data";
+import { useState } from "react";
 
 export default function ReqMaintenance() {
-  const tableBody = [
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-    {
-      name: "Rahma Sari",
-      product: "Landing Page",
-      subject: "Ganti card",
-      whatsapp: "0812-3456-7890",
-    },
-  ];
   const tableHead = [
     "Nama Lengkap",
     "Nama Produk",
@@ -62,6 +15,14 @@ export default function ReqMaintenance() {
     "View Detail",
     "Action",
   ];
+  const [confirm, setConfirm] = useState(false);
+  const [id, setId] = useState(null);
+
+  const openConfirm = (id) => {
+    setConfirm(!confirm);
+    setId(id);
+  };
+
   return (
     <div className="w-full">
       <div className="container mt-8">
@@ -76,13 +37,21 @@ export default function ReqMaintenance() {
         </div>
 
         <div className="px-5 mb-5">
-          <Table tBody={tableBody} tHead={tableHead} />
+          <Table tBody={dataBody} tHead={tableHead} confirm={openConfirm} />
         </div>
 
         <div className="flex justify-end px-5">
           <Pagination />
         </div>
       </div>
+
+      <ModalConfirmation
+        text={"Are you sure want to archive this requst maintenance ?"}
+        open={confirm}
+        send={openConfirm}
+        idData={id}
+        data={dataBody}
+      />
     </div>
   );
 }

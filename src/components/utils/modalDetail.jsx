@@ -1,4 +1,88 @@
-export default function ModalDetail({ detailId }) {
+export default function ModalDetail({ detailId, title, data, path, info }) {
+  let detailPesanan = [
+    {
+      property: "Nama Pemesan",
+      value: data.name,
+    },
+    {
+      property: "Nama Project",
+      value: data.project,
+    },
+    {
+      property: "Kategori Project",
+      value: data.category,
+    },
+    {
+      property: "WhatsApp",
+      value: data.whatsapp,
+    },
+    {
+      property: "Project Referensi",
+      value: data.reference,
+    },
+  ];
+
+  let detailContact = [
+    {
+      property: "Nama",
+      value: data.name,
+    },
+    {
+      property: "WhatsApp",
+      value: data.whatsapp,
+    },
+    {
+      property: "Subjek",
+      value: data.subject,
+    },
+  ];
+
+  let detailMaintenance = [
+    {
+      property: "Nama Lengkap",
+      value: data.name,
+    },
+    {
+      property: "Nama Produk",
+      value: data.product,
+    },
+    {
+      property: "Subjek",
+      value: data.subject,
+    },
+  ];
+
+  let detailServer = [
+    {
+      property: "Nama",
+      value: data.name,
+    },
+    {
+      property: "Fitur",
+      value: data.fitur,
+    },
+    {
+      property: "Harga",
+      value: data.price,
+    },
+    {
+      property: "Jangka Waktu",
+      value: data.time,
+    },
+    {
+      property: "Status",
+      value: data.status,
+    },
+    {
+      property: "Nama Paket",
+      value: data.packet,
+    },
+    {
+      property: "Perusahaan",
+      value: data.company,
+    },
+  ];
+
   const closeModal = () => {
     const elModalDetail = document.querySelectorAll(".modal-detail");
 
@@ -12,41 +96,62 @@ export default function ModalDetail({ detailId }) {
     <div id="myModal" className={`hidden modal-detail`}>
       <div className="detail-content text-start">
         <div className="flex justify-between mb-3">
-          <p className="text-2xl font-medium">Detail Pesanan</p>
+          <p className="text-2xl font-medium">{title}</p>
           <span className="close text-lg px-2" onClick={closeModal}>
             &times;
           </span>
         </div>
 
-        <div className="flex w-[50%] justify-between mb-3">
-          <p className="font-semibold">Nama Pemesan</p>
-          <p className="font-medium">Rahma Sari</p>
-        </div>
-        <div className="flex w-[50%] justify-between mb-3">
-          <p className="font-semibold">Nama Project</p>
-          <p className="font-medium">Rahma Sari</p>
-        </div>
-        <div className="flex w-[50%] justify-between mb-3">
-          <p className="font-semibold">Kategori Project</p>
-          <p className="font-medium">Rahma Sari</p>
-        </div>
-        <div className="flex w-[50%] justify-between mb-3">
-          <p className="font-semibold">WhatsApp</p>
-          <p className="font-medium">Rahma Sari</p>
-        </div>
-        <div className="flex w-[50%] justify-between mb-3">
-          <p className="font-semibold">Project Referensi</p>
-          <p className="font-medium">Rahma Sari</p>
-        </div>
+        {path === "support/contact" || path === "service/server" ? (
+          <hr className="mb-3" />
+        ) : null}
 
-        <p className="font-semibold mb-3">Keterangan Custom Project</p>
-        <p className="font-medium">
-          Lorem ipsum dolor sit amet consectetur. Semper turpis id consequat ac
-          sollicitudin. Tincidunt pharetra risus et pulvinar. Posuere praesent
-          elementum ullamcorper duis. Lectus purus euismod quis molestie nisl
-          tincidunt. Pretium egestas ut sit mauris non euismod sed. Nibh
-          faucibus massa sodales pharetra sem adipiscing.
-        </p>
+        {path === "produk/custom-project" &&
+          detailPesanan.map((item, index) => {
+            return (
+              <div className="flex mb-3" key={index}>
+                <p className="w-[35%] font-semibold">{item.property}</p>
+                <p className="font-medium">{item.value}</p>
+              </div>
+            );
+          })}
+        {path === "support/contact" &&
+          detailContact.map((item, index) => {
+            return (
+              <div className="flex mb-3" key={index}>
+                <p className="w-[35%] font-semibold">{item.property}</p>
+                <p className="font-medium">{item.value}</p>
+              </div>
+            );
+          })}
+        {path === "service/maintenance" &&
+          detailMaintenance.map((item, index) => {
+            return (
+              <div className="flex mb-3" key={index}>
+                <p className="w-[35%] font-semibold">{item.property}</p>
+                <p className="font-medium">{item.value}</p>
+              </div>
+            );
+          })}
+        {path === "service/server" &&
+          detailServer.map((item, index) => {
+            return (
+              <div className="flex mb-3" key={index}>
+                <p className="w-[35%] font-semibold">{item.property}</p>
+                <p className="font-medium">{item.value}</p>
+              </div>
+            );
+          })}
+
+        <p className="font-semibold mb-3">{info}</p>
+        <p className="font-medium">{data.infromation}</p>
+        <p className="font-medium">{data.question}</p>
+
+        <ul className="list-disc list-inside">
+          {data.info_maintenance?.map((item, i) => {
+            return <li key={i}>{item}</li>;
+          })}
+        </ul>
       </div>
     </div>
   );
