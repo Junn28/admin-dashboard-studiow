@@ -3,15 +3,56 @@ import iUnorderList from "../../../assets/unorder-list.svg";
 import iOrderList from "../../../assets/order-list.svg";
 import iSave from "../../../assets/save.svg";
 import Modal from "../../../components/utils/modal";
+import dataTemplate from "../data";
 import { useState } from "react";
 
-export default function AddTemplate({ title, edit, data, sendEdit }) {
+export default function AddTemplate({ title, edit, data, idData }) {
   const [modal, setModal] = useState(false);
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("");
+  const [userInput, setUserInput] = useState({
+    template: "",
+    url_template: "",
+    title: "",
+    billing_date: "",
+    description: "",
+  });
 
   const openModal = () => {
     setModal(!modal);
+  };
+
+  const addNewData = () => {
+    const newData = {
+      template: userInput.template,
+      url_template: userInput.url_template,
+      title: userInput.title,
+      plan: "Premium",
+      status: "Active",
+      billing_date: userInput.billing_date,
+      description: userInput.description,
+      price: "Rp200.000",
+    };
+
+    openModal();
+    return dataTemplate.push(newData);
+  };
+
+  const editData = () => {
+    openModal();
+
+    return dataTemplate.map((item, index) => {
+      if (index == idData) {
+        item.template = userInput.template || data.template;
+        item.url_template = userInput.url_template || data.url_template;
+        item.title = userInput.title || data.title;
+        item.plan = data.plan;
+        item.status = data.status;
+        item.billing_date = userInput.billing_date || data.billing_date;
+        item.description = userInput.description || data.description;
+        item.price = data.price;
+      }
+    });
   };
 
   return (
@@ -24,9 +65,9 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
 
           <div className="file-image text-center mt-3">
             <div className="p-12">
-              {image || edit ? (
+              {image ? (
                 <img
-                  src={edit ? `../../.${data.template}` : image}
+                  src={image}
                   width={250}
                   height={150}
                   alt={fileName}
@@ -51,7 +92,6 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
               className="bg-pws-purple py-2 px-8 mb-5 text-white text-base font-medium rounded-md"
               onClick={() => {
                 document.getElementById("file-upload").click();
-                sendEdit(!edit);
               }}
             >
               Choose Image
@@ -60,9 +100,13 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
                 name="file-upload"
                 type="file"
                 accept="image/*"
-                onChange={({ target: { files } }) => {
+                onChange={({ target: { files, value } }) => {
                   files[0] && setFileName(files[0].name);
                   if (files) setImage(URL.createObjectURL(files[0]));
+
+                  setUserInput((prevState) => {
+                    return { ...prevState, template: value };
+                  });
                 }}
                 hidden
               />
@@ -84,9 +128,14 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
           <input
             type="url"
             name="url-template"
-            placeholder="Field Description"
+            placeholder="https://example.com"
             className="block w-full border-2 p-2 rounded mb-3"
             defaultValue={edit && data.url_template}
+            onChange={(e) => {
+              setUserInput((prevState) => {
+                return { ...prevState, url_template: e.target.value };
+              });
+            }}
             required
           />
 
@@ -115,6 +164,11 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
             placeholder="Field Description"
             className="block w-full border-2 p-2 rounded mb-3"
             defaultValue={edit && data.title}
+            onChange={(e) => {
+              setUserInput((prevState) => {
+                return { ...prevState, title: e.target.value };
+              });
+            }}
             required
           />
 
@@ -155,6 +209,11 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
               placeholder="Field Description"
               className="block w-full p-2"
               defaultValue={edit && data.description}
+              onChange={(e) => {
+                setUserInput((prevState) => {
+                  return { ...prevState, description: e.target.value };
+                });
+              }}
             ></textarea>
           </div>
 
@@ -172,6 +231,12 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
                 name="billing-date"
                 className="me-2"
                 defaultChecked={edit && data.billing_date === "Monthly"}
+                value="Monthly"
+                onChange={(e) => {
+                  setUserInput((prevState) => {
+                    return { ...prevState, billing_date: e.target.value };
+                  });
+                }}
               />
               Monthly
             </label>
@@ -182,6 +247,12 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
                 name="billing-date"
                 className="me-2"
                 defaultChecked={edit && data.billing_date === "Annually"}
+                value="Annually"
+                onChange={(e) => {
+                  setUserInput((prevState) => {
+                    return { ...prevState, billing_date: e.target.value };
+                  });
+                }}
               />
               Annually
             </label>
@@ -191,7 +262,7 @@ export default function AddTemplate({ title, edit, data, sendEdit }) {
         <div className="flex justify-end mt-5 mb-5">
           <button
             className="bg-pws-purple py-2 px-12 flex items-center text-white rounded-md"
-            onClick={openModal}
+            onClick={edit ? editData : addNewData}
           >
             <img src={iSave} alt="save" />
             <p className="text-lg font-edium ms-5">Save</p>

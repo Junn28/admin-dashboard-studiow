@@ -6,5 +6,5 @@ export default function EditServer() {
   const { id } = useParams();
   const dataServer = data[id];
 
-  return <AddServer title={"Edit"} edit={true} data={dataServer} />;
+  return <AddServer title={"Edit"} edit={true} data={dataServer} idData={id} />;
 }

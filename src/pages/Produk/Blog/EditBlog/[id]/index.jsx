@@ -6,5 +6,5 @@ export default function EditBlog() {
   const { id } = useParams();
   const dataBlog = data[id];
 
-  return <AddBlog title={"Edit"} data={dataBlog} />;
+  return <AddBlog title={"Edit"} data={dataBlog} edit={true} idData={id} />;
 }

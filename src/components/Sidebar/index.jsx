@@ -924,8 +924,13 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="sidebar">
+    <div className="sidebar relative">
       <MenuDropdown items={menu} />
+
+      <div className="absolute flex inset-x-16 bottom-8">
+        <p className="font-light text-[10px] text-[#5C5C5C] me-1">Powered by</p>
+        <img src="./src/assets/logo-wesclic.png" alt="logo-wesclic" />
+      </div>
     </div>
   );
 }

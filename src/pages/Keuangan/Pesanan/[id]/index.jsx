@@ -59,7 +59,7 @@ export default function DetailPesanan() {
 
             <p className="text-base font-semibold">Bill Receipt</p>
             <div className="bill-receipt py-5 px-10 rounded-md">
-              <img src="../../src/assets/receipt.png" alt="" />
+              <img src="../../src/assets/receipt.png" alt="receipt" />
 
               <div className="flex mt-3">
                 <svg

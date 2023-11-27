@@ -25,7 +25,7 @@ import RentServer from "./pages/Service/RentServer";
 import AddServer from "./pages/Service/RentServer/AddServer";
 import EditServer from "./pages/Service/RentServer/EditServer/[id]";
 import AddFaq from "./pages/Support/Faq/AddFaq";
-import EditFaq from "./pages/Support/Faq/EditFaq";
+import EditFaq from "./pages/Support/Faq/EditFaq/[id]";
 
 function App() {
   return (

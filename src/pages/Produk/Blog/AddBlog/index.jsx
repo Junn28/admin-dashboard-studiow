@@ -4,14 +4,52 @@ import iUnorderList from "../../../../assets/unorder-list.svg";
 import iOrderList from "../../../../assets/order-list.svg";
 import iSave from "../../../../assets/save.svg";
 import Modal from "../../../../components/utils/modal";
+import dataBlog from "../data";
 
-export default function AddBlog({ title, edit, data, sendEdit }) {
+export default function AddBlog({ title, edit, data, idData }) {
   const [modal, setModal] = useState(false);
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("");
+  const [userInput, setUserInput] = useState({
+    project: "",
+    category: "",
+    releases_date: "",
+    status: "",
+    description: "",
+    tools: "",
+  });
 
   const openModal = () => {
     setModal(!modal);
+  };
+
+  const addNewData = () => {
+    const newData = {
+      project: userInput.project,
+      category: userInput.category,
+      releases_date: "2023/03/23",
+      status: "Publish",
+      description: userInput.description,
+      tools: userInput.tools,
+    };
+
+    openModal();
+    return dataBlog.push(newData);
+  };
+
+  const editData = () => {
+    openModal();
+
+    return dataBlog.map((item, index) => {
+      if (index == idData) {
+        item.project = userInput.project || data.project;
+        item.category = userInput.category || data.category;
+        item.releases_date = data.releases_date;
+        item.status = data.status;
+        item.description = userInput.description || data.description;
+        item.tools = userInput.tools || data.tools;
+      }
+    });
   };
 
   return (
@@ -24,9 +62,9 @@ export default function AddBlog({ title, edit, data, sendEdit }) {
 
           <div className="file-image text-center mt-3">
             <div className="p-12">
-              {image || edit ? (
+              {image ? (
                 <img
-                  src={edit ? `../../.${data.template}` : image}
+                  src={image}
                   width={250}
                   height={150}
                   alt={fileName}
@@ -51,7 +89,6 @@ export default function AddBlog({ title, edit, data, sendEdit }) {
               className="bg-pws-purple py-2 px-8 mb-5 text-white text-base font-medium rounded-md"
               onClick={() => {
                 document.getElementById("file-upload").click();
-                // sendEdit(!edit);
               }}
             >
               Choose Image
@@ -83,7 +120,12 @@ export default function AddBlog({ title, edit, data, sendEdit }) {
             name="topic"
             placeholder="Field Description"
             className="block w-full border-2 p-2 rounded mb-3"
-            // defaultValue={edit && data.url_template}
+            defaultValue={edit && data.project}
+            onChange={(e) => {
+              setUserInput((prevState) => {
+                return { ...prevState, project: e.target.value };
+              });
+            }}
             required
           />
 
@@ -97,10 +139,16 @@ export default function AddBlog({ title, edit, data, sendEdit }) {
             name="category"
             id="category"
             className="text-xs font-light mb-3"
+            defaultValue={edit && data.category}
+            onChange={(e) => {
+              setUserInput((prevState) => {
+                return { ...prevState, category: e.target.value };
+              });
+            }}
           >
-            <option value="category">Category</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
+            <option>Choose</option>
+            <option value="Game">Game</option>
+            <option value="Website">Website</option>
           </select>
 
           <label
@@ -139,7 +187,12 @@ export default function AddBlog({ title, edit, data, sendEdit }) {
               id="description"
               placeholder="Field Description"
               className="block w-full p-2"
-              //   defaultValue={edit && data.description}
+              defaultValue={edit && data.description}
+              onChange={(e) => {
+                setUserInput((prevState) => {
+                  return { ...prevState, description: e.target.value };
+                });
+              }}
             ></textarea>
           </div>
 
@@ -151,7 +204,12 @@ export default function AddBlog({ title, edit, data, sendEdit }) {
             name="tools"
             placeholder="Field Description"
             className="block w-full border-2 p-2 rounded mb-3"
-            // defaultValue={edit && data.url_template}
+            defaultValue={edit && data.tools}
+            onChange={(e) => {
+              setUserInput((prevState) => {
+                return { ...prevState, tools: e.target.value };
+              });
+            }}
             required
           />
         </form>
@@ -159,7 +217,7 @@ export default function AddBlog({ title, edit, data, sendEdit }) {
         <div className="flex justify-end mt-5 mb-5">
           <button
             className="bg-pws-purple py-2 px-12 flex items-center text-white rounded-md"
-            onClick={openModal}
+            onClick={edit ? editData : addNewData}
           >
             <img src={iSave} alt="save" />
             <p className="text-lg font-edium ms-5">Save</p>

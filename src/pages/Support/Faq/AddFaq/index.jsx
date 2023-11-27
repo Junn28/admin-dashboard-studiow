@@ -2,13 +2,42 @@ import iUnorderList from "../../../../assets/unorder-list.svg";
 import iOrderList from "../../../../assets/order-list.svg";
 import iSave from "../../../../assets/save.svg";
 import Modal from "../../../../components/utils/modal";
+import dataQuestion from "../data";
 import { useState } from "react";
 
-export default function AddFaq({ title, edit, data }) {
+export default function AddFaq({ title, edit, data, idData }) {
   const [modal, setModal] = useState(false);
+  const [userInput, setUserInput] = useState({
+    question: "",
+    category: "",
+    answer: "",
+  });
 
   const openModal = () => {
     setModal(!modal);
+  };
+
+  const addNewData = () => {
+    const newData = {
+      question: userInput.question,
+      category: userInput.category,
+      answer: userInput.answer,
+    };
+
+    openModal();
+    return dataQuestion.push(newData);
+  };
+
+  const editData = () => {
+    openModal();
+
+    return dataQuestion.map((item, index) => {
+      if (index == idData) {
+        item.question = userInput.question || data.question;
+        item.category = userInput.category || data.category;
+        item.answer = userInput.answer || data.answer;
+      }
+    });
   };
 
   return (
@@ -31,6 +60,11 @@ export default function AddFaq({ title, edit, data }) {
             placeholder="Insert question here"
             className="block w-full border-2 p-2 rounded mb-3"
             defaultValue={edit && data.question}
+            onChange={(e) => {
+              setUserInput((prevState) => {
+                return { ...prevState, question: e.target.value };
+              });
+            }}
             required
           />
 
@@ -44,7 +78,12 @@ export default function AddFaq({ title, edit, data }) {
             name="category"
             id="category"
             className="text-xs font-light mb-3"
-            defaultValue={data.category}
+            defaultValue={edit && data.category}
+            onChange={(e) => {
+              setUserInput((prevState) => {
+                return { ...prevState, category: e.target.value };
+              });
+            }}
           >
             <option>Choose</option>
             <option value="Game">Game</option>
@@ -52,10 +91,10 @@ export default function AddFaq({ title, edit, data }) {
           </select>
 
           <label
-            htmlFor="description"
+            htmlFor="answer"
             className="block text-base font-semibold mb-2"
           >
-            Description
+            Jawaban
           </label>
           <div className="input-description rounded mb-3">
             <div className="btn-group-format flex bg-gray-300 p-2">
@@ -87,6 +126,11 @@ export default function AddFaq({ title, edit, data }) {
               placeholder="Describe the answer"
               className="block w-full p-2"
               defaultValue={edit && data.answer}
+              onChange={(e) => {
+                setUserInput((prevState) => {
+                  return { ...prevState, answer: e.target.value };
+                });
+              }}
             ></textarea>
           </div>
         </form>
@@ -94,7 +138,7 @@ export default function AddFaq({ title, edit, data }) {
         <div className="flex justify-end mt-5 mb-5">
           <button
             className="bg-pws-purple py-2 px-12 flex items-center text-white rounded-md"
-            onClick={openModal}
+            onClick={edit ? editData : addNewData}
           >
             <img src={iSave} alt="save" />
             <p className="text-lg font-edium ms-5">Save</p>
