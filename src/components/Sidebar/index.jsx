@@ -929,7 +929,7 @@ export default function Sidebar() {
 
       <div className="absolute flex inset-x-16 bottom-8">
         <p className="font-light text-[10px] text-[#5C5C5C] me-1">Powered by</p>
-        <img src="./src/assets/logo-wesclic.png" alt="logo-wesclic" />
+        <img src="/logo-wesclic.png" alt="logo-wesclic" />
       </div>
     </div>
   );

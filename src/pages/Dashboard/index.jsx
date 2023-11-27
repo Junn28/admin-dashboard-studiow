@@ -200,7 +200,7 @@ export default function Dashboard() {
       status: "Active",
       billing_date: "March 31, 2023",
       description: "Domain Web",
-      img_src: "./src/assets/doc.png",
+      img_src: "./public/doc.png",
     },
     {
       name: "Cristhoper Jone",
@@ -209,7 +209,7 @@ export default function Dashboard() {
       status: "Active",
       billing_date: "March 31, 2023",
       description: "Domain Web",
-      img_src: "./src/assets/doc.png",
+      img_src: "./public/doc.png",
     },
     {
       name: "Aurel Natasya",
@@ -218,7 +218,7 @@ export default function Dashboard() {
       status: "Active",
       billing_date: "March 31, 2023",
       description: "Domain Web",
-      img_src: "./src/assets/doc.png",
+      img_src: "./public/doc.png",
     },
     {
       name: "Rinda Sari",
@@ -227,7 +227,7 @@ export default function Dashboard() {
       status: "Active",
       billing_date: "March 31, 2023",
       description: "Domain Web",
-      img_src: "./src/assets/doc.png",
+      img_src: "./public/doc.png",
     },
     {
       name: "Philjones",
@@ -236,7 +236,7 @@ export default function Dashboard() {
       status: "Active",
       billing_date: "March 31, 2023",
       description: "Domain Web",
-      img_src: "./src/assets/doc.png",
+      img_src: "./public/doc.png",
     },
   ];
   const tableHead = [
