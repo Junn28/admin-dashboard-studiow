@@ -1,6 +1,6 @@
 let dataBody = [
   {
-    template: "./public/template.png",
+    template: "/template.png",
     url_template: "xyz.com",
     title: "Lorem, ipsum dolor.",
     plan: "Premium",
@@ -10,7 +10,7 @@ let dataBody = [
     price: "Rp200.000",
   },
   {
-    template: "./public/template.png",
+    template: "/template.png",
     url_template: "xyz.com",
     title: "Lorem, ipsum dolor.",
     plan: "Premium",
@@ -20,7 +20,7 @@ let dataBody = [
     price: "Rp200.000",
   },
   {
-    template: "./public/template.png",
+    template: "/template.png",
     url_template: "xyz.com",
     title: "Lorem, ipsum dolor.",
     plan: "Premium",
