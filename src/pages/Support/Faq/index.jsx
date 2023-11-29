@@ -11,6 +11,23 @@ import ModalConfirmation from "../../../components/utils/modalConfirmation";
 export default function Faq() {
   const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
+  const [inputSearch, setInputSearch] = useState("");
+  const [sortedRows, setSortedRows] = useState(questions);
+
+  const filteredRows = sortedRows.filter((item) =>
+    item.question.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
+
+  const handleFilter = () => {
+    const sort = filteredRows.sort((a, b) =>
+      a["question"].localeCompare(b["question"])
+    );
+    setSortedRows(sort);
+  };
 
   const toggle = () => {
     if (visible)
@@ -41,8 +58,11 @@ export default function Faq() {
           title={"Frequently Asked Questions"}
           btnName={"Add"}
           btnIcon={iPlus}
+          btnAction={addFaq}
           search={true}
           filter={true}
+          handleFilter={handleFilter}
+          handleSearch={handleSearch}
         />
       </div>
 
@@ -135,7 +155,7 @@ export default function Faq() {
                 </div>
               </div>
 
-              {questions.map((value, index) => (
+              {filteredRows.map((value, index) => (
                 <ItemQuestion
                   data={value}
                   key={index}

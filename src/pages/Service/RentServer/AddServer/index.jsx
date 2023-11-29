@@ -57,7 +57,7 @@ export default function AddServer({ title, edit, data, idData }) {
           <h1 className="text-2xl font-medium">{title || "Add"} Sewa Server</h1>
 
           <button
-            className="bg-pws-purple py-2 px-12 flex items-center text-white rounded-md"
+            className="bg-[#4c7fff] py-2 px-12 flex items-center text-white rounded-md"
             onClick={edit ? editData : addNewData}
           >
             <img src={iSave} alt="save" />

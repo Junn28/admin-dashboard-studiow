@@ -16,6 +16,19 @@ export default function Pesanan() {
     "Document",
   ];
   const [confirm, setConfirm] = useState(false);
+  const [inputSearch, setInputSearch] = useState("");
+
+  const filteredRows = data.filter(
+    (item) =>
+      item.name.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.plan.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.billing_date.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.description.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
 
   const openConfirm = () => {
     setConfirm(!confirm);
@@ -32,9 +45,10 @@ export default function Pesanan() {
             btnIcon={iExport}
             filter={false}
             search={true}
+            handleSearch={handleSearch}
           />
 
-          <Table tHead={tableHead} tBody={data} />
+          <Table tHead={tableHead} tBody={filteredRows} />
         </div>
 
         <div className="flex justify-end px-5">

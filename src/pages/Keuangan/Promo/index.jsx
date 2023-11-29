@@ -220,6 +220,27 @@ export default function Promo() {
   const [confirm, setConfirm] = useState(false);
   const [id, setId] = useState(null);
   const navigate = useNavigate();
+  const [inputSearch, setInputSearch] = useState("");
+  const [sortedRows, setSortedRows] = useState(dataBody);
+
+  const filteredRows = sortedRows.filter(
+    (item) =>
+      item.types.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.status.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.billing_date.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.description.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
+
+  const handleFilter = () => {
+    const sort = filteredRows.sort((a, b) =>
+      a["types"].localeCompare(b["types"])
+    );
+    setSortedRows(sort);
+  };
 
   const addPromo = () => {
     navigate("/keuangan/promo/add");
@@ -246,8 +267,10 @@ export default function Promo() {
             btnAction={addPromo}
             filter={true}
             search={true}
+            handleFilter={handleFilter}
+            handleSearch={handleSearch}
           />
-          <Table tBody={dataBody} tHead={tableHead} confirm={openConfirm} />
+          <Table tBody={filteredRows} tHead={tableHead} confirm={openConfirm} />
         </div>
 
         <div className="flex justify-end px-5">

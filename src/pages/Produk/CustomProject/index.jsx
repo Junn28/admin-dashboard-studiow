@@ -18,6 +18,26 @@ export default function CustomProject() {
   const [confirm, setConfirm] = useState(false);
   const [custom, setCustom] = useState(false);
   const [id, setId] = useState(null);
+  const [inputSearch, setInputSearch] = useState("");
+  const [sortedRows, setSortedRows] = useState(dataBody);
+
+  const filteredRows = sortedRows.filter(
+    (item) =>
+      item.name.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.project.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.category.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
+
+  const handleFilter = () => {
+    const sort = filteredRows.sort((a, b) =>
+      a["name"].localeCompare(b["name"])
+    );
+    setSortedRows(sort);
+  };
 
   const openConfirm = (id) => {
     setConfirm(!confirm);
@@ -38,12 +58,14 @@ export default function CustomProject() {
             btnIcon={iPlus}
             filter={true}
             search={true}
+            handleSearch={handleSearch}
+            handleFilter={handleFilter}
           />
         </div>
 
         <div className="px-5 mb-5">
           <Table
-            tBody={dataBody}
+            tBody={filteredRows}
             tHead={tableHead}
             custom={openCustom}
             confirm={openConfirm}

@@ -219,6 +219,27 @@ export default function Template() {
   const navigate = useNavigate();
   const [confirm, setConfirm] = useState(false);
   const [id, setId] = useState(null);
+  const [inputSearch, setInputSearch] = useState("");
+  const [sortedRows, setSortedRows] = useState(dataBody);
+
+  const filteredRows = sortedRows.filter(
+    (item) =>
+      item.title.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.plan.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.billing_date.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.description.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
+
+  const handleFilter = () => {
+    const sort = filteredRows.sort((a, b) =>
+      a["billing_date"].localeCompare(b["billing_date"])
+    );
+    setSortedRows(sort);
+  };
 
   const addTemplate = () => {
     navigate("/template/add");
@@ -245,8 +266,10 @@ export default function Template() {
             btnAction={addTemplate}
             filter={true}
             search={true}
+            handleSearch={handleSearch}
+            handleFilter={handleFilter}
           />
-          <Table tBody={dataBody} tHead={tableHead} confirm={openConfirm} />
+          <Table tBody={filteredRows} tHead={tableHead} confirm={openConfirm} />
         </div>
 
         <div className="flex justify-end px-5">

@@ -19,6 +19,26 @@ export default function Portofolio() {
   const navigate = useNavigate();
   const [confirm, setConfirm] = useState(false);
   const [id, setId] = useState(null);
+  const [inputSearch, setInputSearch] = useState("");
+  const [sortedRows, setSortedRows] = useState(dataBody);
+
+  const filteredRows = sortedRows.filter(
+    (item) =>
+      item.project.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.category.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.status.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
+
+  const handleFilter = () => {
+    const sort = filteredRows.sort((a, b) =>
+      a["status"].localeCompare(b["status"])
+    );
+    setSortedRows(sort);
+  };
 
   const addPortofolio = () => {
     navigate("/produk/portofolio/add");
@@ -40,11 +60,13 @@ export default function Portofolio() {
             filter={true}
             search={true}
             btnAction={addPortofolio}
+            handleFilter={handleFilter}
+            handleSearch={handleSearch}
           />
         </div>
 
         <div className="px-5 mb-5">
-          <Table tBody={dataBody} tHead={tableHead} confirm={openConfirm} />
+          <Table tBody={filteredRows} tHead={tableHead} confirm={openConfirm} />
         </div>
 
         <div className="flex justify-end px-5">

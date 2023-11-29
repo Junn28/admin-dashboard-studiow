@@ -171,7 +171,7 @@ export default function AddPromo({ title, edit, data, idData }) {
 
         <div className="flex justify-end mt-5 mb-5">
           <button
-            className="bg-pws-purple py-2 px-12 flex items-center text-white rounded-md"
+            className="bg-[#4c7fff] py-2 px-12 flex items-center text-white rounded-md"
             onClick={edit ? editData : addNewData}
           >
             <img src={iSave} alt="save" />

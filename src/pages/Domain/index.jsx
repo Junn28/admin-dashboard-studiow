@@ -4,6 +4,7 @@ import ListCard from "../../components/utils/listCard";
 import Pagination from "../../components/utils/pagination";
 import Table from "../../components/utils/table";
 import iPlus from "../../assets/plus.svg";
+import { useState } from "react";
 
 export default function Domain() {
   const card = [
@@ -264,6 +265,28 @@ export default function Domain() {
     "Action",
   ];
 
+  const [inputSearch, setInputSearch] = useState("");
+  const [sortedRows, setSortedRows] = useState(tableBody);
+
+  const filteredRows = sortedRows.filter(
+    (item) =>
+      item.domain.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.plan.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.status.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.description.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
+
+  const handleFilter = () => {
+    const sort = filteredRows.sort((a, b) =>
+      a["domain"].localeCompare(b["domain"])
+    );
+    setSortedRows(sort);
+  };
+
   return (
     <div className="w-full">
       <div className="container mt-8">
@@ -279,8 +302,10 @@ export default function Domain() {
             btnIcon={iPlus}
             filter={true}
             search={true}
+            handleSearch={handleSearch}
+            handleFilter={handleFilter}
           />
-          <Table tBody={tableBody} tHead={tableHead} />
+          <Table tBody={filteredRows} tHead={tableHead} />
         </div>
 
         <div className="flex justify-end px-5">

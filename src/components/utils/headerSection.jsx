@@ -7,6 +7,8 @@ export default function HeaderSection({
   btnAction,
   filter,
   search,
+  handleSearch,
+  handleFilter,
 }) {
   return (
     <div className="flex justify-between">
@@ -17,6 +19,7 @@ export default function HeaderSection({
           className={`${
             !filter && "hidden"
           } btn-primary bg-pws-purple flex items-center me-3`}
+          onClick={handleFilter}
         >
           <svg
             width="16"
@@ -54,7 +57,13 @@ export default function HeaderSection({
             />
           </svg>
 
-          <input type="search" name="search" id="search" placeholder="Search" />
+          <input
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Search"
+            onChange={handleSearch}
+          />
         </div>
 
         <button

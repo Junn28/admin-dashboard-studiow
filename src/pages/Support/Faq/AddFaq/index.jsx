@@ -43,7 +43,7 @@ export default function AddFaq({ title, edit, data, idData }) {
   return (
     <div className="w-full">
       <div className="mt-5 px-5">
-        <h1 className="text-2xl font-medium">{title || "Add"} Template</h1>
+        <h1 className="text-2xl font-medium">{title || "Add"} FAQs</h1>
       </div>
 
       <div className="mt-5 px-5">
@@ -137,7 +137,7 @@ export default function AddFaq({ title, edit, data, idData }) {
 
         <div className="flex justify-end mt-5 mb-5">
           <button
-            className="bg-pws-purple py-2 px-12 flex items-center text-white rounded-md"
+            className="bg-[#4c7fff] py-2 px-12 flex items-center text-white rounded-md"
             onClick={edit ? editData : addNewData}
           >
             <img src={iSave} alt="save" />

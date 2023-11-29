@@ -14,6 +14,7 @@ import {
   PointElement,
 } from "chart.js";
 import "./dashboard.css";
+import { useState } from "react";
 
 ChartJS.register(
   ArcElement,
@@ -307,6 +308,28 @@ export default function Dashboard() {
     ],
   };
 
+  const [inputSearch, setInputSearch] = useState("");
+  const [sortedRows, setSortedRows] = useState(tableBody);
+
+  const filteredRows = sortedRows.filter(
+    (item) =>
+      item.name.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.plan.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.status.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.description.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
+
+  const handleFilter = () => {
+    const sort = filteredRows.sort((a, b) =>
+      a["name"].localeCompare(b["name"])
+    );
+    setSortedRows(sort);
+  };
+
   return (
     <>
       <div className="w-full">
@@ -470,8 +493,10 @@ export default function Dashboard() {
               btnIcon={iExport}
               filter={true}
               search={true}
+              handleSearch={handleSearch}
+              handleFilter={handleFilter}
             />
-            <Table tBody={tableBody} tHead={tableHead} />
+            <Table tBody={filteredRows} tHead={tableHead} />
           </div>
 
           <div className="flex justify-end px-5">

@@ -9,7 +9,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
   {
     name: "Cristhoper Jone",
@@ -21,7 +21,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
   {
     name: "Aurel Natasya",
@@ -33,7 +33,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
   {
     name: "Rinda Sari",
@@ -45,7 +45,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
   {
     name: "Philjones",
@@ -57,7 +57,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
   {
     name: "Chelsea",
@@ -69,7 +69,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
   {
     name: "Silvio Morreira",
@@ -81,7 +81,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
   {
     name: "Bernando Silva",
@@ -93,7 +93,7 @@ const dataPesanan = [
     billing_date: "March 31, 2023",
     billing_plan: "Monthly",
     description: "Domain Web",
-    img_src: "../../../../src/assets/doc.png",
+    img_src: "/doc.png",
   },
 ];
 

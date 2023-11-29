@@ -11,6 +11,17 @@ import { useState } from "react";
 export default function RentServer() {
   const tableHead = ["Nama Paket", "Status", "View Detail", "Action"];
   const navigate = useNavigate();
+  const [inputSearch, setInputSearch] = useState("");
+
+  const filteredRows = dataBody.filter(
+    (item) =>
+      item.packet.toLowerCase().includes(inputSearch.toLowerCase()) ||
+      item.status.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
+  const handleSearch = ({ target: { value } }) => {
+    setInputSearch(value);
+  };
 
   const addServer = () => {
     navigate("/service/server/add");
@@ -34,11 +45,12 @@ export default function RentServer() {
             btnIcon={iPlus}
             btnAction={addServer}
             search={true}
+            handleSearch={handleSearch}
           />
         </div>
 
         <div className="px-5 mb-5">
-          <Table tBody={dataBody} tHead={tableHead} confirm={openConfirm} />
+          <Table tBody={filteredRows} tHead={tableHead} confirm={openConfirm} />
         </div>
 
         <div className="flex justify-end px-5">
