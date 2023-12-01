@@ -12,11 +12,15 @@ export default function itemQuestion({ data, idQuestion, confirm }) {
   };
 
   const toggleQuestion = () => {
-    if (visibleQuestion)
-      document.querySelector(".item-question .circle").style.transform =
-        "translateX(-20px)";
-    else
-      document.querySelector(".item-question .circle").style.transform = "none";
+    const elItemQuestion = document.querySelectorAll(".item-question .circle");
+
+    elItemQuestion.forEach((el, index) => {
+      if (index === idQuestion) {
+        if (visibleQuestion) {
+          el.style.transform = "translateX(-20px)";
+        } else el.style.transform = "none";
+      }
+    });
 
     setVisibleQuestion(!visibleQuestion);
   };
